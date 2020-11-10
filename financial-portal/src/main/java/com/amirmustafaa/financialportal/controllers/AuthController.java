@@ -84,6 +84,13 @@ public class AuthController {
 					.badRequest()
 					.body(new MessageResponse("Error: Email is already in use!"));
 		}
+		
+		if(!signUpRequest.getPasswordCheck().equals(signUpRequest.getPassword())) {
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponse("Error: Passord is not Confirmed"));
+			
+		}
 
 		// Create new user's account
 		User user = new User(signUpRequest.getUsername(), 

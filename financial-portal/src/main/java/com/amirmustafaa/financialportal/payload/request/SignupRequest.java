@@ -18,6 +18,8 @@ public class SignupRequest {
    // @NotBlank
    // @Size(min = 6, max = 40)
     private String password;
+    
+    private String passwordCheck;
   
     public String getUsername() {
         return username;
@@ -38,10 +40,20 @@ public class SignupRequest {
     public String getPassword() {
         return password;
     }
- 
+    
+    
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public String getPasswordCheck() {
+    	return passwordCheck;
+    }
+    
+    public void setPasswordCheck(String passwordCheck) {
+    	this.passwordCheck = passwordCheck;
+    }
+ 
     
     public Set<String> getRole() {
       return this.role;
