@@ -1,8 +1,11 @@
 import React from 'react';
+import LoginPage from './LoginPage.jsx';
+
 
 function Login(){
   return(
     <div>
+    <LoginPage />
     </div>
   );
 }

@@ -1,0 +1,49 @@
+/* Login Page */
+.login-page {
+  background-color: #00031d;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("./img/moneyImg1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  min-height: 100vh; }
+
+.login-card {
+  background-color: #252631;
+  margin: auto; }
+  @media screen and (min-width: 768px) {
+    .login-card {
+      width: 336px; } }
+  .login-card .card-body {
+    padding: 40px; }
+  .login-card .login-brand {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 28px;
+    margin-left: auto;
+    margin-right: auto; }
+  .login-card .form-group {
+    margin-bottom: 1rem; }
+  .login-card .form-control {
+    font-weight: 400; }
+    .login-card .form-control::-webkit-input-placeholder {
+      /* Edge */
+
+      font-weight: 400; }
+    .login-card .form-control:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+
+      font-weight: 400; }
+    .login-card .form-control::-moz-placeholder {
+
+      font-weight: 400; }
+    .login-card .form-control::-ms-input-placeholder {
+
+      font-weight: 400; }
+    .login-card .form-control::placeholder {
+
+      font-weight: 400; }

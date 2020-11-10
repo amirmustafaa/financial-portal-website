@@ -1,9 +1,10 @@
 import React from 'react';
+import ProfilePage from './ProfilePage.jsx';
 
 function Profile(){
   return(
     <div>
-      <h1>Test</h1>
+      <ProfilePage />
     </div>
   )
 }
