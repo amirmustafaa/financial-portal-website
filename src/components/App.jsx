@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import UserContext from "../context/UserContext.js";
 import Login from './Login/Login.jsx';
 import Register from './Register/Register.jsx';
+import MainPage from './Dashboard/MainPage/MainPage';
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
 
@@ -42,6 +43,7 @@ function App() {
         <Switch>
           <Route path= "/" exact component = {Login} />
           <Route path= "/register" component = {Register} />
+          <Route path= "/mainpage" component = {MainPage} />
         </Switch>
       </UserContext.Provider>
     </Router>
