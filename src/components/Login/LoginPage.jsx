@@ -37,9 +37,8 @@ function LoginPage(){
        token: loginRes.data.accessToken,
        user: loginRes.data
      })
-     console.log(loginRes.data.roles);
     cookies.set("auth-token", loginRes.data.accessToken,{ path: '/' }, {httpOnly:true});
-    history.push("/profile/" + loginRes.data.id)
+    history.push("/mainpage/" + loginRes.data.id)
 
   };
   return (
@@ -52,9 +51,11 @@ function LoginPage(){
                         <div className="col-md-8 col-10 my-5">
                             <h3 className="mb-5 text-center heading">Welcome to Money Portal Web</h3>
                             <h6 className="msg-info">Please login to your account</h6>
-                            <div className="form-group"> <label className="form-control-label text-muted">Username</label> <input name ="username" onChange = {handleChange}  type="text"  placeholder="Username" className="form-control" required/> </div>
-                            <div className="form-group"> <label className="form-control-label text-muted">Password</label> <input name = "password" onChange = {handleChange} type="password"  placeholder="Password" className="form-control" required/> </div>
-                            <div className="row justify-content-center my-3 px-3"> <button onClick= {handleClick} className="btn-block btn-color">Login to Portal</button> </div>
+                            <form>
+                              <div className="form-group"> <label className="form-control-label text-muted">Username</label> <input name ="username" onChange = {handleChange}  type="text"  placeholder="Username" className="form-control" required/> </div>
+                              <div className="form-group"> <label className="form-control-label text-muted">Password</label> <input name = "password" onChange = {handleChange} type="password"  placeholder="Password" className="form-control" required/> </div>
+                              <div className="row justify-content-center my-3 px-3"> <button type = "submit" onClick= {handleClick} className="btn-block btn-color">Login to Portal</button> </div>
+                            </form>
                         </div>
                     </div>
                     <div className="bottom text-center mb-5">

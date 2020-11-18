@@ -184,8 +184,7 @@ a:hover {
 /**********Sidebar**********/
 
 .sidebar{
-    background: #ec250d;;
-    background: linear-gradient(0deg,#ec250d 0,#fd5d93 100%);
+    background: linear-gradient(0deg,#0c6630 0,#2fba66 100%);
     height: calc(100vh);
     width: 230px;
     top: 0;
@@ -207,6 +206,21 @@ a:hover {
 }
 
 /***************DashBoard***************/
+
+.flex-container {
+    display:flex;
+
+}
+
+.flex-side {
+  flex: 1;
+
+
+}
+.flex-main{
+  flex: 7;
+}
+
 .mainPage{
     background-color: #252631;
 }

@@ -1,5 +1,8 @@
 package com.amirmustafaa.financialportal.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,6 +35,7 @@ public class Transaction {
 				joinColumns = @JoinColumn(name = "account_id"), 
 				inverseJoinColumns = @JoinColumn(name = "transaction_id"))
 	
+	private Set<Account> accounts  = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -79,6 +83,14 @@ public class Transaction {
 
 	public void setDate(String date) {
 		Date = date;
+	}
+
+	public Set<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(Set<Account> accounts) {
+		this.accounts = accounts;
 	}
 	
 	

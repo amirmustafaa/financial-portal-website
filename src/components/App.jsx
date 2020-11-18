@@ -27,10 +27,12 @@ function App() {
         const userRes = await Axios.get("http://localhost:8080/api/test/user", {
           headers: { "Authorization":  `Bearer ${token}`},
         });
-        setUserData({
-          token,
-          user: userRes.data,
-        });
+        if(userRes.data){
+          setUserData({
+            token,
+            user: userRes.data,
+          });
+      }
 
     };
 
@@ -43,7 +45,7 @@ function App() {
         <Switch>
           <Route path= "/" exact component = {Login} />
           <Route path= "/register" component = {Register} />
-          <Route path= "/mainpage" component = {MainPage} />
+          <Route path= "/mainpage/:userId" component = {MainPage} />
         </Switch>
       </UserContext.Provider>
     </Router>

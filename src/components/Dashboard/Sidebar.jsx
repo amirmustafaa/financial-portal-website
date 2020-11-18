@@ -1,24 +1,53 @@
-import React from 'react';
-import { NavItem, NavLink, Nav } from "reactstrap";
+import React,{useState, useContext} from 'react';
+import { NavItem, NavLink, Nav,Dropdown, DropdownItem, DropdownToggle, DropdownMenu,UncontrolledDropdown } from "reactstrap";
 import { Link } from "react-router-dom";
+import UserContext from "../../context/UserContext";
+
 
 function Sidebar(){
+    const { userData } = useContext(UserContext);
+
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const toggle = () => setDropdownOpen(!dropdownOpen);
+
+
     return(
         <div className = "sidebar">
-            <h3>List Based</h3>
+            {userData.user ? (
+                <h3>{userData.user}</h3>
+            
+          ) : (
+
+            <>
+            </>
+          )}
+            
             <Nav vertical>
-                <NavItem>
-                <NavLink href="#">Link</NavLink>
-                </NavItem>
-                <NavItem>
-                <NavLink href="#">Link</NavLink>
-                </NavItem>
-                <NavItem>
-                <NavLink href="#">Another Link</NavLink>
-                </NavItem>
-                <NavItem>
-                <NavLink disabled href="#">Disabled Link</NavLink>
-                </NavItem>
+                <UncontrolledDropdown>
+                    <DropdownToggle nav caret>
+                         Accounts
+                    </DropdownToggle>
+                    <DropdownMenu>
+                        <DropdownItem header>Header</DropdownItem>
+                        <DropdownItem disabled>Action</DropdownItem>
+                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem>Another Action</DropdownItem>
+                    </DropdownMenu>
+                </UncontrolledDropdown>
+                    
+                <UncontrolledDropdown>
+                    <DropdownToggle nav caret>
+                            Budgets
+                        </DropdownToggle>
+                        <DropdownMenu>
+                            <DropdownItem header>Header</DropdownItem>
+                            <DropdownItem disabled>Action</DropdownItem>
+                            <DropdownItem>Another Action</DropdownItem>
+                            <DropdownItem divider />
+                            <DropdownItem>Another Action</DropdownItem>
+                        </DropdownMenu>
+                </UncontrolledDropdown>
             </Nav>
         </div>
        

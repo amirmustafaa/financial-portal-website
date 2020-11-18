@@ -40,15 +40,6 @@ function RegisterPage (){
     };
      await Axios.post("http://localhost:8080/api/auth/signup", userObject);
 
-    //  const loginRes = await  Axios.post("http://localhost:5000/users/login", {
-    //   email:state.email,
-    //   password:state.password
-    // });
-    // setUserData({
-    //   token: loginRes.data.token,
-    //   user: loginRes.data.user
-    // });
-    //cookies.set("auth-token", loginRes.data.token,{ path: '/' }, {httpOnly:true});
     history.push("/");
   };
 
@@ -63,12 +54,14 @@ function RegisterPage (){
                         <div className="col-md-8 col-10 my-5">
                             <h3 className="mb-5 text-center heading">Welcome to Money Portal Web</h3>
                             <h6 className="msg-info">Please Create Your Account</h6>
-                            <div className="form-group"> <label className="form-control-label text-muted">Username</label> <input name ="username" onChange = {handleChange}  type="text"  placeholder="Username" className="form-control" required/> </div>
-                            <div className="form-group"> <label className="form-control-label text-muted">Email</label> <input name ="email" onChange = {handleChange}  type="email"  placeholder="Email" className="form-control" required/> </div>
-                            <hr />
-                            <div className="form-group"> <label className="form-control-label text-muted">Password</label> <input name = "password" onChange = {handleChange} type="password"  placeholder="Password" className="form-control" required/> </div>
-                            <div className="form-group"> <label className="form-control-label text-muted">Confirm Password</label> <input name = "passwordCheck" onChange = {handleChange} type="password"  placeholder="Confirm Password" className="form-control" required/> </div>
-                            <div className="row justify-content-center my-3 px-3"> <button onClick= {createUser} className="btn-block btn-color">Create Account</button> </div>
+                            <form>
+                              <div className="form-group"> <label className="form-control-label text-muted">Username</label> <input name ="username" onChange = {handleChange}  type="text"  placeholder="Username" className="form-control" required/> </div>
+                              <div className="form-group"> <label className="form-control-label text-muted">Email</label> <input name ="email" onChange = {handleChange}  type="email"  placeholder="Email" className="form-control" required/> </div>
+                              <hr />
+                              <div className="form-group"> <label className="form-control-label text-muted">Password</label> <input name = "password" onChange = {handleChange} type="password"  placeholder="Password" className="form-control" required/> </div>
+                              <div className="form-group"> <label className="form-control-label text-muted">Confirm Password</label> <input name = "passwordCheck" onChange = {handleChange} type="password"  placeholder="Confirm Password" className="form-control" required/> </div>
+                              <div className="row justify-content-center my-3 px-3"> <button onClick= {createUser} className="btn-block btn-color">Create Account</button> </div>
+                            </form>
                         </div>
                     </div>
                     <div className="bottom text-center mb-5">

@@ -31,7 +31,7 @@ import com.amirmustafaa.financialportal.repository.UserRepository;
 import com.amirmustafaa.financialportal.security.jwt.JwtUtils;
 import com.amirmustafaa.financialportal.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

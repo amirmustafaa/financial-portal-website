@@ -24,6 +24,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
+	
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
@@ -54,6 +55,8 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
 		if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
 			return headerAuth.substring(7, headerAuth.length());
+		
+
 		}
 
 		return null;

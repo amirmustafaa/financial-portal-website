@@ -1,5 +1,8 @@
 package com.amirmustafaa.financialportal.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(	name = "accounts")
@@ -27,7 +31,7 @@ public class Account {
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "account_id"))
 	
-	
+	private Set<User> users  = new HashSet<>();
 	
 
 	public Long getId() {
@@ -54,6 +58,13 @@ public class Account {
 		this.maximumAmount = maximumAmount;
 	}
 	
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setRoles(Set<User> users) {
+		this.users = users;
+	}
 	
 	
 	
