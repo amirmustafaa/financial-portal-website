@@ -1,6 +1,8 @@
 package com.amirmustafaa.financialportal.models;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -25,17 +27,13 @@ public class Budget {
 	
 	private String duration;
 	
-	private Long maximumAmount;
+	private BigDecimal maximumAmount;
 	
 	private String Goal;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinTable(	name = "budget_accounts", 
-				joinColumns = @JoinColumn(name = "budget_id"), 
-				inverseJoinColumns = @JoinColumn(name = "account_id"))
+	@ManyToOne
+	private List<Account> accounts;
 	
-	private Set<Account> acounts  = new HashSet<>();
-
 	public Long getId() {
 		return id;
 	}
@@ -60,11 +58,11 @@ public class Budget {
 		this.duration = duration;
 	}
 
-	public Long getMaximumAmount() {
+	public BigDecimal getMaximumAmount() {
 		return maximumAmount;
 	}
 
-	public void setMaximumAmount(Long maximumAmount) {
+	public void setMaximumAmount(BigDecimal maximumAmount) {
 		this.maximumAmount = maximumAmount;
 	}
 
@@ -76,12 +74,12 @@ public class Budget {
 		Goal = goal;
 	}
 
-	public Set<Account> getAcounts() {
-		return acounts;
+	public List<Account> getAccounts() {
+		return accounts;
 	}
 
-	public void setAcounts(Set<Account> acounts) {
-		this.acounts = acounts;
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
 	}
 
 	

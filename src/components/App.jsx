@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import UserContext from "../context/UserContext.js";
-import Login from './Login/Login.jsx';
-import Register from './Register/Register.jsx';
+import Login from './Login/Login';
+import Register from './Register/Register';
 import MainPage from './Dashboard/MainPage/MainPage';
+import CreateAccountPage from './Dashboard/CreateAccountPage/CreateAccountPage';
+import AccountPage from './Dashboard/AccountPage/AccountPage';
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
 
@@ -46,6 +48,8 @@ function App() {
           <Route path= "/" exact component = {Login} />
           <Route path= "/register" component = {Register} />
           <Route path= "/mainpage/:userId" component = {MainPage} />
+          <Route path= "/createaccount/:userId" component = {CreateAccountPage} />
+          <Route path= "/account/:userId" component = {AccountPage} />
         </Switch>
       </UserContext.Provider>
     </Router>

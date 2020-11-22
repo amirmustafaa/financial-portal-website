@@ -1,15 +1,13 @@
 package com.amirmustafaa.financialportal.models;
 
-import java.util.HashSet;
-import java.util.Set;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,18 +22,14 @@ public class Transaction {
 	
 	private String company;
 	
-	private Long amount;
+	private BigDecimal amount;
 	
 	private String category;
 	
 	private String Date;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinTable(	name = "account_transactions", 
-				joinColumns = @JoinColumn(name = "account_id"), 
-				inverseJoinColumns = @JoinColumn(name = "transaction_id"))
-	
-	private Set<Account> accounts  = new HashSet<>();
+	@ManyToOne
+	private List<Account> accounts;
 
 	public Long getId() {
 		return id;
@@ -61,11 +55,11 @@ public class Transaction {
 		this.company = company;
 	}
 
-	public Long getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(Long amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
@@ -85,15 +79,15 @@ public class Transaction {
 		Date = date;
 	}
 
-	public Set<Account> getAccounts() {
+	public List<Account> getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(Set<Account> accounts) {
+	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
 	}
-	
-	
+
+
 	
 	
 	

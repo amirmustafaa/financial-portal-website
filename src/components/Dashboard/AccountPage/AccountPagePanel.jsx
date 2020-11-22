@@ -1,0 +1,20 @@
+import React from 'react';
+
+function AccountPagePanel(){
+    return(
+        <div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+
+        </div>
+    );
+
+}
+
+export default AccountPagePanel;

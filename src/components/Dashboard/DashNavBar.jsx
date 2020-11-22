@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import { useHistory} from 'react-router-dom';
 import {
     Collapse,
     Navbar,
@@ -12,7 +13,15 @@ import {
 
 import Logo from './logo.png';
 
+
 function DashNavBar(){
+    const cookies = new Cookies();
+    let history = useHistory();
+
+    function logout() {
+        cookies.set("auth-token", "", { path: '/' }, {httpOnly:true});
+        history.replace("/");
+    }
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     return(
@@ -23,7 +32,7 @@ function DashNavBar(){
                 <Collapse isOpen={isOpen} navbar>
                 <Nav className="nav" navbar>
                 </Nav>
-                <a className = "logOut" href = "/"><NavbarText ><Button color="primary">LOG OUT</Button>{' '}</NavbarText></a>
+                <NavbarText ><Button onClick = {logout} color="primary">LOG OUT</Button>{' '}</NavbarText>
                 </Collapse>
             </Navbar>
         </div>

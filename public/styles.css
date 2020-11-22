@@ -221,9 +221,44 @@ a:hover {
   flex: 7;
 }
 
+.flex-create-account{
+  flex: 2;
+  margin: auto;
+  margin-right: 15%;
+  margin-top: 5%;
+  background-color: #4b525c;
+}
+
 .mainPage{
     background-color: #252631;
 }
+
+.money-check{
+    margin-left: 15%;
+    color: #2fba66;
+}
+
+
+.create-account-card{
+    margin: 5%;
+}
+
+.main-card{
+    background-color:#4b525c;
+}
+
+.card-text-main{
+    color: white;
+}
+
+.create-account-page{
+    background-color: #252631;
+}
+
+.create-account-header{
+    color: white;
+}
+
 
 .navbar-brand{
     margin-left: 1%;

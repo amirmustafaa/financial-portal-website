@@ -1,6 +1,9 @@
 package com.amirmustafaa.financialportal.models;
 
+
+import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -11,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -24,15 +28,31 @@ public class Account {
 	
 	private String name;
 	
-	private String maximumAmount;
+	private String accountType;
+	
+	private long currentAmount; 
+	
+	private long monthlyAmount;
+	
+	private long minimumAmount;
+	
+	
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(	name = "user_accounts", 
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "account_id"))
+	private List <User> users;
 	
-	private Set<User> users  = new HashSet<>();
 	
+
+	public Account(String name, String accountType, long currentAmount, long monthlyAmount, long minimumAmount) {
+		this.name = name;
+		this.accountType = accountType;
+		this.currentAmount = currentAmount;
+		this.monthlyAmount = monthlyAmount;
+		this.minimumAmount = minimumAmount;
+	}
 
 	public Long getId() {
 		return id;
@@ -50,21 +70,49 @@ public class Account {
 		this.name = name;
 	}
 
-	public String getMaximumAmount() {
-		return maximumAmount;
-	}
 
-	public void setMaximumAmount(String maximumAmount) {
-		this.maximumAmount = maximumAmount;
-	}
 	
-	public Set<User> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 
-	public void setRoles(Set<User> users) {
+	public void setUsers(List <User> users) {
 		this.users = users;
 	}
+
+	public long getCurrentAmount() {
+		return currentAmount;
+	}
+
+	public void setCurrentAmount(long currentAmount) {
+		this.currentAmount = currentAmount;
+	}
+
+	public long getMinimumAmount() {
+		return minimumAmount;
+	}
+
+	public void setMinimumAmount(long minimumAmount) {
+		this.minimumAmount = minimumAmount;
+	}
+
+
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+
+	public long getMonthlyAmount() {
+		return monthlyAmount;
+	}
+
+	public void setMonthlyAmount(long monthlyAmount) {
+		this.monthlyAmount = monthlyAmount;
+	}
+
 	
 	
 	

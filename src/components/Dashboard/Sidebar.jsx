@@ -23,6 +23,9 @@ function Sidebar(){
           )}
             
             <Nav vertical>
+                <NavItem>
+                <NavLink href="/mainpage/1">Home</NavLink>
+                </NavItem>
                 <UncontrolledDropdown>
                     <DropdownToggle nav caret>
                          Accounts

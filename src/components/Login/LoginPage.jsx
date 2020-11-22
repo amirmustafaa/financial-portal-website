@@ -33,10 +33,10 @@ function LoginPage(){
 
     const loginRes = await Axios.post("http://localhost:8080/api/auth/signin", userObject);
 
-     setUserData({
-       token: loginRes.data.accessToken,
-       user: loginRes.data
-     })
+    //  setUserData({
+    //    token: loginRes.data.accessToken,
+    //    user: loginRes.data.id
+    //  })
     cookies.set("auth-token", loginRes.data.accessToken,{ path: '/' }, {httpOnly:true});
     history.push("/mainpage/" + loginRes.data.id)
 
