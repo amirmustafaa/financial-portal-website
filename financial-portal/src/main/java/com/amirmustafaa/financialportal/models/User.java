@@ -1,5 +1,7 @@
 package com.amirmustafaa.financialportal.models;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -35,10 +37,15 @@ public class User {
 	@JoinTable(	name = "user_roles", 
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
-	
-	
-
 	private Set<Role> roles = new HashSet<>();
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Account> accounts = new ArrayList<>();
+	
+	@OneToMany
+	private Set<Budget> budgets = new HashSet<>();
+	
+	
 
 	public User() {
 	}
@@ -88,4 +95,23 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(Account acc) {
+		accounts.add(acc);
+	}
+
+	public Set<Budget> getBudgets() {
+		return budgets;
+	}
+
+	public void setBudgets(Set<Budget> budgets) {
+		this.budgets = budgets;
+	}
+
+
+
 }

@@ -30,23 +30,22 @@ public class Account {
 	
 	private String accountType;
 	
-	private long currentAmount; 
+	private BigDecimal currentAmount; 
 	
-	private long monthlyAmount;
+	private BigDecimal monthlyAmount;
 	
-	private long minimumAmount;
-	
-	
-	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(	name = "user_accounts", 
-				joinColumns = @JoinColumn(name = "user_id"), 
-				inverseJoinColumns = @JoinColumn(name = "account_id"))
-	private List <User> users;
+	private BigDecimal minimumAmount;
 	
 	
+	@OneToMany
+	private Set<Transaction> transactions = new HashSet<>();
+	
+	
+	public Account() {
+		
+	}
 
-	public Account(String name, String accountType, long currentAmount, long monthlyAmount, long minimumAmount) {
+	public Account(String name, String accountType, BigDecimal currentAmount, BigDecimal monthlyAmount, BigDecimal minimumAmount) {
 		this.name = name;
 		this.accountType = accountType;
 		this.currentAmount = currentAmount;
@@ -70,29 +69,20 @@ public class Account {
 		this.name = name;
 	}
 
-
 	
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List <User> users) {
-		this.users = users;
-	}
-
-	public long getCurrentAmount() {
+	public BigDecimal getCurrentAmount() {
 		return currentAmount;
 	}
 
-	public void setCurrentAmount(long currentAmount) {
+	public void setCurrentAmount(BigDecimal currentAmount) {
 		this.currentAmount = currentAmount;
 	}
 
-	public long getMinimumAmount() {
+	public BigDecimal getMinimumAmount() {
 		return minimumAmount;
 	}
 
-	public void setMinimumAmount(long minimumAmount) {
+	public void setMinimumAmount(BigDecimal minimumAmount) {
 		this.minimumAmount = minimumAmount;
 	}
 
@@ -105,11 +95,11 @@ public class Account {
 		this.accountType = accountType;
 	}
 
-	public long getMonthlyAmount() {
+	public BigDecimal getMonthlyAmount() {
 		return monthlyAmount;
 	}
 
-	public void setMonthlyAmount(long monthlyAmount) {
+	public void setMonthlyAmount(BigDecimal monthlyAmount) {
 		this.monthlyAmount = monthlyAmount;
 	}
 

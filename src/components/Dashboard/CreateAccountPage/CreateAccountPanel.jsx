@@ -1,13 +1,16 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
-const cookies = new Cookies();
+import UserContext from "../../../context/UserContext.js";
+
 
 
 function CreateAccountPanel(){
     let history = useHistory();
+    const cookies = new Cookies();
     let token = cookies.get("auth-token");
+    const { userData } = useContext(UserContext);
 
     const [state, setState] = useState({
       name: "",
@@ -25,19 +28,21 @@ function CreateAccountPanel(){
       });
     }
 
-    const createAccount = async() =>{
+    const createAccount = async(event) =>{
+      event.preventDefault();
+      const accountObject = {
+         name: state.name,
+          accountType: state.accountType,
+          currentAmount:state.currentAmount,
+          monthlyAmount: state.monthlyAmount,
+          minimumAmount: state.minimumAmount
+      };
 
-        const accountObject = {
-            name: state.name,
-            accountType: state.accountType,
-            currentAmount:state.currentAmount,
-            monthlyAmount: state.monthlyAmount,
-            minimumAmount: state.minimumAmount
-          };
+      const accountRes = await Axios.post("http://localhost:8080/api/data/createaccount", accountObject,{
+         headers: { "Authorization":  `Bearer ${token}`},
+      });
 
-        const accountRes = await Axios.post("http://localhost:8080/api/data/createaccount", accountObject,{
-            headers: { "Authorization":  `Bearer ${token}`},
-          });
+      history.push("/mainpage/"+userData)
     }
     return(
         <div>

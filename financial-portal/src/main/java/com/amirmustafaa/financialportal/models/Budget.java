@@ -2,7 +2,6 @@ package com.amirmustafaa.financialportal.models;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -10,9 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,9 +27,8 @@ public class Budget {
 	
 	private String Goal;
 	
-	@ManyToOne
-	private List<Account> accounts;
 	
+
 	public Long getId() {
 		return id;
 	}
@@ -72,14 +67,6 @@ public class Budget {
 
 	public void setGoal(String goal) {
 		Goal = goal;
-	}
-
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
 	}
 
 	

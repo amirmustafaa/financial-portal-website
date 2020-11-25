@@ -22,12 +22,15 @@ function DashNavBar(){
         cookies.set("auth-token", "", { path: '/' }, {httpOnly:true});
         history.replace("/");
     }
+
+    
+
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     return(
         <div >     
             <Navbar className = "dashNav" light expand="md">
-                <NavbarBrand href="/"><img className = "logo" src = {Logo} alt ="logo"/></NavbarBrand>
+                <NavbarBrand className = "logo"  href="/"><img src = {Logo} alt ="logo"/></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                 <Nav className="nav" navbar>

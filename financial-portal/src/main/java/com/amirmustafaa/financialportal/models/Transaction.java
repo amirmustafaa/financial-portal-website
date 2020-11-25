@@ -2,13 +2,10 @@ package com.amirmustafaa.financialportal.models;
 
 
 import java.math.BigDecimal;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,8 +25,6 @@ public class Transaction {
 	
 	private String Date;
 	
-	@ManyToOne
-	private List<Account> accounts;
 
 	public Long getId() {
 		return id;
@@ -79,13 +74,7 @@ public class Transaction {
 		Date = date;
 	}
 
-	public List<Account> getAccounts() {
-		return accounts;
-	}
 
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
 
 
 	

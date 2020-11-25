@@ -199,10 +199,28 @@ a:hover {
     transition: .5s cubic-bezier(.685,.0473,.346,1);
 }
 
+.sidebar-title{
+    text-align:center;
+}
+
+.title-icon{
+    margin-right: 3%;
+}
+
+.sidebar-item{
+    padding-left: 8%;
+    font-size: 120%;
+}
+
+
 /************DashNav***********/
 
 .dashNav{
     background-color: #252631;
+}
+
+.logo{
+    margin-right:70%;
 }
 
 /***************DashBoard***************/

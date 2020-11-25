@@ -49,7 +49,7 @@ function LoginPage(){
                 <div className="card card1">
                     <div className="row justify-content-center my-auto">
                         <div className="col-md-8 col-10 my-5">
-                            <h3 className="mb-5 text-center heading">Welcome to Money Portal Web</h3>
+                            <h3 className="mb-5 text-center heading">Welcome to Money Portal Pro</h3>
                             <h6 className="msg-info">Please login to your account</h6>
                             <form>
                               <div className="form-group"> <label className="form-control-label text-muted">Username</label> <input name ="username" onChange = {handleChange}  type="text"  placeholder="Username" className="form-control" required/> </div>
