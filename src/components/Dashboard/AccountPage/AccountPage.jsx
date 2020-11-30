@@ -2,7 +2,6 @@ import React,{useState} from 'react';
 import Sidebar from '../Sidebar';
 import DashNavBar from '../DashNavBar';
 import AccountPagePanel from './AccountPagePanel';
-//import AccountContext from "../../../context/AccountContext.js";
 
 function AccountPage(){
 

@@ -22,6 +22,7 @@ import com.amirmustafaa.financialportal.models.Account;
 import com.amirmustafaa.financialportal.models.Budget;
 import com.amirmustafaa.financialportal.models.Transaction;
 import com.amirmustafaa.financialportal.models.User;
+import com.amirmustafaa.financialportal.payload.request.AccountRequest;
 import com.amirmustafaa.financialportal.repository.AccountRepository;
 import com.amirmustafaa.financialportal.repository.BudgetRepository;
 import com.amirmustafaa.financialportal.repository.TransactionRepository;
@@ -68,7 +69,7 @@ public class DataController {
 		Account account = accountRepository.findById(transaction.getAccountId())
 				.orElseThrow(() -> new RuntimeException("Error: Account is not found."));
 		BigDecimal newAmount;
-		if(transaction.getCategory().equals("Deposit")) {
+		if(transaction.getType().equals("Deposit")) {
 			newAmount = account.getCurrentAmount().add(transaction.getAmount());
 		}else {
 			newAmount = account.getCurrentAmount().subtract(transaction.getAmount());
@@ -77,8 +78,8 @@ public class DataController {
 		
 		account.setCurrentAmount(newAmount);
 		account.setTransactions(transaction);
-		accountRepository.save(account);
 		transactionRepository.save(transaction);
+		accountRepository.save(account);
 		
 		return "Transaction Created";	
 	}
@@ -100,8 +101,8 @@ public class DataController {
 	}
 	
 	@PostMapping("accountinformation")
-	public Account accountInformation(@RequestBody Long accountId) {
-		Account account = accountRepository.findById(accountId)
+	public Account accountInformation(@RequestBody AccountRequest accountRequest) {
+		Account account = accountRepository.findById(accountRequest.getAccountId())
 				.orElseThrow(() -> new RuntimeException("Error: Account is not found."));
 		return account;
 	}

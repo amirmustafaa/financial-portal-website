@@ -17,13 +17,16 @@ public class Transaction {
 	
 	private String name;
 	
-	private String company;
 	
 	private BigDecimal amount;
 	
+	private String company;
+	
+	private String type;
+	
 	private String category;
 	
-	private String Date;
+	private String date;
 	
 	private Long accountId;
 	
@@ -69,11 +72,11 @@ public class Transaction {
 	}
 
 	public String getDate() {
-		return Date;
+		return date;
 	}
 
 	public void setDate(String date) {
-		Date = date;
+		this.date = date;
 	}
 
 	public Long getAccountId() {
@@ -82,6 +85,14 @@ public class Transaction {
 
 	public void setAccountId(Long accountId) {
 		this.accountId = accountId;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 

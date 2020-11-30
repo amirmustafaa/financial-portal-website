@@ -59,7 +59,17 @@ function Sidebar(){
             <hr/>
             <Nav className = "sidebar-item"vertical>
                 <NavItem className = "sidebar-name">
-                <NavLink   href="/mainpage/1"> <FontAwesomeIcon className ="card-img-top" icon={faHome} />Home</NavLink>
+
+                {userData.user ? (
+                    <NavLink   href= {"/mainpage/" + userData.user} > <FontAwesomeIcon className ="card-img-top" icon={faHome} />Home</NavLink>
+                
+            
+                ) : (
+
+                 <>
+                </>
+                )}
+               
                 </NavItem>
                 <UncontrolledDropdown>
                     <DropdownToggle  nav caret  >
@@ -69,7 +79,7 @@ function Sidebar(){
                     {userData.user ? (
                         accountState.map(function(d, idx){
                             return  (
-                                <Link key = {idx} to={{ pathname: '/account/' + d.name, state: { data: d.id} }}>
+                                <Link key = {idx} to={{ pathname: '/account/' + d.id, state: { data: d.id} }}>
                                 <DropdownItem key = {idx}>{d.name}</DropdownItem>
                                 </Link>
                             );
@@ -91,7 +101,7 @@ function Sidebar(){
                         {userData.user ? (
                             budgetState.map(function(d, idx){
                                 return  (
-                                    <Link key = {idx} to={{ pathname: '/budget/' + d.name, state: { data: d.id} }}>
+                                    <Link key = {idx} to={{ pathname: '/budget/' + d.id, state: { data: d.id} }}>
                                     <DropdownItem key = {idx}>{d.name}</DropdownItem>
                                     </Link>
                                 );

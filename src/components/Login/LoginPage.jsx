@@ -38,7 +38,7 @@ function LoginPage(){
     //    user: loginRes.data.id
     //  })
     cookies.set("auth-token", loginRes.data.accessToken,{ path: '/' }, {httpOnly:true});
-    history.push("/mainpage/" + loginRes.data.id)
+    history.push("/mainpage/" + loginRes.data.username)
 
   };
   return (

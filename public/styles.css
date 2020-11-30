@@ -301,11 +301,18 @@ a:hover {
 
   .balance-card{
       margin: 5%;
+      background-color: #4b525c;
+      color: white; 
   }
 
   .transactions{
       margin: 5%;
       background-color:#4b525c;
+      color: white;
+  }
+
+  .transaction-title{
+      margin-right: 60%;
   }
 
   .create-budget{

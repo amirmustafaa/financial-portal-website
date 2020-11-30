@@ -1,22 +1,57 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import {useLocation } from 'react-router';
 import UserContext from "../../../context/UserContext";
 import Axios from 'axios';
+import Cookies from 'universal-cookie';
 
 function AccountPagePanel(){
     const { userData } = useContext(UserContext);
+    const cookies = new Cookies();
+    let token = cookies.get("auth-token");
     const location = useLocation();
-    console.log(location.state.data);
+    const accountId = location.state.data
+
+    const[accountState, setAccountState]= useState([]);
+    const[transactionState, setTransactionState]= useState([]);
+
+
+    const accountInformation = async() =>{
+        const accountObject = {
+            accountId: accountId
+        };
+        const accountRes = await Axios.post("http://localhost:8080/api/data/accountinformation", accountObject,{
+           headers: { "Authorization":  `Bearer ${token}`},
+        });
+        setAccountState(accountRes.data);
+  
+      }
+
+    const transactionList = async() =>{
+        const accountObject = {
+            accountId: accountId
+        };
+        const transactionRes = await Axios.post("http://localhost:8080/api/data/transactionlist", accountObject,{
+           headers: { "Authorization":  `Bearer ${token}`},
+        });
+        setTransactionState(transactionRes.data);
+
+    }
+    
+    useEffect(() => {
+        accountInformation();
+    },[])
+
+
  
     return(
         <div>
             <div class="card text-center balance-card">
                 <div class="card-header">
-                    Current Balance
+                    <h1>Current Balance</h1>
                 </div>
                 <div class="card-body">
-                     <h2>5000.23</h2>
+                     <h2>{accountState.currentAmount}</h2>
                 </div>
             </div>
             <div className = "transactions">
@@ -24,7 +59,7 @@ function AccountPagePanel(){
                 <div className = "row">
                     <h1 className = "transaction-title">Transactions</h1>
                     {userData.user ? (
-                        <Link to = {"/createtransaction/" + userData.user}>
+                        <Link to={{ pathname: '/createtransaction/' + userData.user, state: { data: accountId} }}>
                              <button type="button" class="btn btn-primary">Add Transaction</button>
                         </Link>
                         ) : (
@@ -39,12 +74,11 @@ function AccountPagePanel(){
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th class="center">#</th>
-                                <th>Item</th>
-                                <th>Description</th>
-                                <th class="right">Price</th>
-                                <th class="center">Qty</th>
-                                <th class="right">Total</th>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th class="right">Company</th>
+                                <th class="center">Date</th>
+                                <th class="right">Category</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,7 +88,6 @@ function AccountPagePanel(){
                                 <td class="left">Iphone 10X with headphone</td>
                                 <td class="right">$1500</td>
                                 <td class="center">10</td>
-                                <td class="right">$15,000</td>
                             </tr>
                         </tbody>
                     </table>
