@@ -1,22 +1,23 @@
 import React from 'react';
 import Sidebar from '../Sidebar';
 import DashNavBar from '../DashNavBar';
-import CreateBudgetPanel from './CreateBudgetPanel';
+import CreateTransactionPanel from './CreateTransactionPanel';
 
-function CreateBudgetPage(){
+
+function CreateTransaction(){
     return(
-               
-        <div className = "create-account-page">
+          <div className = "create-account-page">
             <DashNavBar />
             <div className = "flex-container"> 
                 <div className= "flex-side"><Sidebar  /></div>
-                <div className = "flex-create-budget account-creater" ><CreateBudgetPanel  /></div>
+                <div className = "flex-create-account account-creater" ><CreateTransactionPanel  /></div>
             </div>
 
         </div>
+
 
     );
 
 }
 
-export default CreateBudgetPage;
+export default CreateTransaction;

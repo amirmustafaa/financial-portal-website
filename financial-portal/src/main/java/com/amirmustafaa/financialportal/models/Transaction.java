@@ -25,6 +25,8 @@ public class Transaction {
 	
 	private String Date;
 	
+	private Long accountId;
+	
 
 	public Long getId() {
 		return id;
@@ -74,7 +76,13 @@ public class Transaction {
 		Date = date;
 	}
 
+	public Long getAccountId() {
+		return accountId;
+	}
 
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
+	}
 
 
 	

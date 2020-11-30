@@ -4,38 +4,46 @@ import Cookies from 'universal-cookie';
 import { NavItem, NavLink, Nav, DropdownItem, DropdownToggle, DropdownMenu,UncontrolledDropdown } from "reactstrap";
 import { Link } from "react-router-dom";
 import UserContext from "../../context/UserContext";
-import AccountContext from "../../context/AccountContext.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUser, faHome, faMoneyCheckAlt, faChartPie} from '@fortawesome/free-solid-svg-icons'
 
 
 function Sidebar(){
     const { userData } = useContext(UserContext);
-    const { accountId, setAccountId }= useContext(AccountContext);
     const cookies = new Cookies();
     let token = cookies.get("auth-token");
 
-    const [state, setState] = useState([]);
+    const [accountState, setAccountState] = useState([]);
+    const [budgetState, setBudgetState] = useState([]);
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen(!dropdownOpen);
 
-    const changeId = (id) =>{
-        setAccountId(id);
-    }
-
-    
     
     const getAccounts = async() => {
         const accountRes = await Axios.get("http://localhost:8080/api/data/accountlist", {
           headers: { "Authorization":  `Bearer ${token}`},
         });
-        setState(accountRes.data);
+        setAccountState(accountRes.data);
    
     }
 
+    const getBudgets = async() => {
+        const accountRes = await Axios.get("http://localhost:8080/api/data/budgetlist", {
+          headers: { "Authorization":  `Bearer ${token}`},
+        });
+        setBudgetState(accountRes.data);
+   
+    }
+
+
+
     useEffect(() => {
         getAccounts();
+      },[])
+
+    useEffect(() => {
+        getBudgets();
       },[])
 
     return(
@@ -59,7 +67,7 @@ function Sidebar(){
                     </DropdownToggle>
                     <DropdownMenu>
                     {userData.user ? (
-                        state.map(function(d, idx){
+                        accountState.map(function(d, idx){
                             return  (
                                 <Link key = {idx} to={{ pathname: '/account/' + d.name, state: { data: d.id} }}>
                                 <DropdownItem key = {idx}>{d.name}</DropdownItem>
@@ -80,13 +88,22 @@ function Sidebar(){
                     <FontAwesomeIcon className ="card-img-top" icon={faChartPie}/> Budgets
                     </DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
-                        <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        {userData.user ? (
+                            budgetState.map(function(d, idx){
+                                return  (
+                                    <Link key = {idx} to={{ pathname: '/budget/' + d.name, state: { data: d.id} }}>
+                                    <DropdownItem key = {idx}>{d.name}</DropdownItem>
+                                    </Link>
+                                );
+                        })
+                        ) : (
+
+                        <>
+                        </>
+                        )}
                     </DropdownMenu>
                 </UncontrolledDropdown>
+                
             </Nav>
         </div>
        

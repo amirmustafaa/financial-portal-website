@@ -2,6 +2,7 @@ package com.amirmustafaa.financialportal.models;
 
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,7 +39,7 @@ public class Account {
 	
 	
 	@OneToMany
-	private Set<Transaction> transactions = new HashSet<>();
+	private List<Transaction> transactions = new ArrayList<>();
 	
 	
 	public Account() {
@@ -101,6 +102,14 @@ public class Account {
 
 	public void setMonthlyAmount(BigDecimal monthlyAmount) {
 		this.monthlyAmount = monthlyAmount;
+	}
+
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(Transaction accountTransactions) {
+		transactions.add(accountTransactions);
 	}
 
 	

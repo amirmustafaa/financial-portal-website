@@ -8,6 +8,8 @@ import MainPage from './Dashboard/MainPage/MainPage';
 import CreateAccountPage from './Dashboard/CreateAccountPage/CreateAccountPage';
 import AccountPage from './Dashboard/AccountPage/AccountPage';
 import CreateBudgetPage from './Dashboard/CreateBudgetPage/CreateBudgetPage';
+import BudgetPage from './Dashboard/BudgetPage/BudgetPage';
+import CreateTransaction from './Dashboard/CreateTransaction/CreateTransaction';
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
 
@@ -53,6 +55,10 @@ function App() {
           <Route path= "/mainpage/:userId" component = {MainPage} />
           <Route path= "/createaccount/:userId" component = {CreateAccountPage} />
           <Route path= "/account/:accountName" component = {AccountPage} />
+          <Route path= "/createbudget/:userId" component = {CreateBudgetPage} />
+          <Route path= "/budget/:budgetName" component = {BudgetPage} />
+          <Route path= "/createtransaction/:userId" component = {CreateTransaction} />
+          
         </Switch>
         </AccountContext.Provider>
       </UserContext.Provider>

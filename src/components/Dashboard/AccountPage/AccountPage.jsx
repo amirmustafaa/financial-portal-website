@@ -12,7 +12,7 @@ function AccountPage(){
             <DashNavBar />
         <div className = "flex-container"> 
             <div className= "flex-side"><Sidebar  /></div>
-            <div className = "flex-create-account account-creater" ><AccountPagePanel  /></div>
+            <div className = "flex-main" ><AccountPagePanel  /></div>
         </div>
         </div>
     );

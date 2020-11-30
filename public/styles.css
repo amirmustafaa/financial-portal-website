@@ -243,9 +243,17 @@ a:hover {
   flex: 2;
   margin: auto;
   margin-right: 15%;
-  margin-top: 5%;
+  margin-top: 3%;
   background-color: #4b525c;
 }
+
+.flex-create-budget{
+    flex: 2;
+    margin: auto;
+    margin-right: 15%;
+    margin-top: 1%;
+    background-color: #4b525c;
+  }
 
 .mainPage{
     background-color: #252631;
@@ -285,4 +293,21 @@ a:hover {
 .logOut{
     margin-left: 90%;
   
+  }
+
+  .account-card{
+      margin: 10%;
+  }
+
+  .balance-card{
+      margin: 5%;
+  }
+
+  .transactions{
+      margin: 5%;
+      background-color:#4b525c;
+  }
+
+  .create-budget{
+    
   }

@@ -1,14 +1,13 @@
 package com.amirmustafaa.financialportal.controllers;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +22,6 @@ import com.amirmustafaa.financialportal.models.Account;
 import com.amirmustafaa.financialportal.models.Budget;
 import com.amirmustafaa.financialportal.models.Transaction;
 import com.amirmustafaa.financialportal.models.User;
-import com.amirmustafaa.financialportal.payload.request.LoginRequest;
 import com.amirmustafaa.financialportal.repository.AccountRepository;
 import com.amirmustafaa.financialportal.repository.BudgetRepository;
 import com.amirmustafaa.financialportal.repository.TransactionRepository;
@@ -53,12 +51,12 @@ public class DataController {
 		UserDetails userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
-		Set<User> users = new HashSet<>();
-		Set<Account> acc = new HashSet<>();
+		//Set<User> users = new HashSet<>();
+		//Set<Account> acc = new HashSet<>();
 		User userAccount = userRepository.findByUsername(userDetails.getUsername())
 		.orElseThrow(() -> new RuntimeException("Error: User is not found."));
-		users.add(userAccount);
-		acc.add(account);
+		//users.add(userAccount);
+		//acc.add(account);
 		userAccount.setAccounts(account);
 		accountRepository.save(account);
 		userRepository.save(userAccount);
@@ -67,7 +65,20 @@ public class DataController {
 	
 	@PostMapping("/createtransaction")
 	public String createTransaction(@RequestBody Transaction transaction) {
+		Account account = accountRepository.findById(transaction.getAccountId())
+				.orElseThrow(() -> new RuntimeException("Error: Account is not found."));
+		BigDecimal newAmount;
+		if(transaction.getCategory().equals("Deposit")) {
+			newAmount = account.getCurrentAmount().add(transaction.getAmount());
+		}else {
+			newAmount = account.getCurrentAmount().subtract(transaction.getAmount());
+		}
 		
+		
+		account.setCurrentAmount(newAmount);
+		account.setTransactions(transaction);
+		accountRepository.save(account);
+		transactionRepository.save(transaction);
 		
 		return "Transaction Created";	
 	}
@@ -82,17 +93,17 @@ public class DataController {
 		User userAccount = userRepository.findByUsername(userDetails.getUsername())
 				.orElseThrow(() -> new RuntimeException("Error: User is not found."));
 		
-		Set<Budget> userBudget = new HashSet<>();
-		userBudget.add(budget);
-		userAccount.setBudgets(userBudget);
-		userRepository.save(userAccount);
+		userAccount.setBudgets(budget);
 		budgetRepository.save(budget);
+		userRepository.save(userAccount);
 		return "Budget Created";
 	}
 	
 	@PostMapping("accountinformation")
-	public String accountInformation(Long accountId) {
-		return null;
+	public Account accountInformation(@RequestBody Long accountId) {
+		Account account = accountRepository.findById(accountId)
+				.orElseThrow(() -> new RuntimeException("Error: Account is not found."));
+		return account;
 	}
 		
 	
@@ -109,16 +120,18 @@ public class DataController {
 		return userAccount.getAccounts();
 	}
 	
-	@GetMapping("/transactioninformation")
-	public String transactionInformation() {
+	@PostMapping("/transactionlist")
+	public List<Transaction> transactionList(Long accountId) {
 
-		return null;
+		Account account = accountRepository.findById(accountId)
+				.orElseThrow(() -> new RuntimeException("Error: Account is not found."));
+		return account.getTransactions();
 		
 		
 	}
 	
-	@GetMapping("/budgetinformation")
-	public Set<Budget> budgetInformation() {
+	@GetMapping("/budgetlist")
+	public List<Budget> budgetInformation() {
 		UserDetails userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User userAccount = userRepository.findByUsername(userDetails.getUsername())
@@ -127,5 +140,17 @@ public class DataController {
 		
 		
 	}
+	
+	@PostMapping("/budgetinformation")
+	public Budget budgetInformation(Long budgetId) {
+		Budget budget = budgetRepository.findById(budgetId)
+				.orElseThrow(() -> new RuntimeException("Error: Budget is not found."));
+			
+		return budget;
+		
+		
+	}
+	
+	
 
 }

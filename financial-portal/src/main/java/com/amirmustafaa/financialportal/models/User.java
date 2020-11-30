@@ -43,7 +43,7 @@ public class User {
 	private List<Account> accounts = new ArrayList<>();
 	
 	@OneToMany
-	private Set<Budget> budgets = new HashSet<>();
+	private List<Budget> budgets = new ArrayList<>();
 	
 	
 
@@ -104,12 +104,12 @@ public class User {
 		accounts.add(acc);
 	}
 
-	public Set<Budget> getBudgets() {
+	public List<Budget> getBudgets() {
 		return budgets;
 	}
 
-	public void setBudgets(Set<Budget> budgets) {
-		this.budgets = budgets;
+	public void setBudgets(Budget userBudgets) {
+		budgets.add(userBudgets);
 	}
 
 
