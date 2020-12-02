@@ -122,9 +122,9 @@ public class DataController {
 	}
 	
 	@PostMapping("/transactionlist")
-	public List<Transaction> transactionList(Long accountId) {
+	public List<Transaction> transactionList(@RequestBody AccountRequest accountRequest) {
 
-		Account account = accountRepository.findById(accountId)
+		Account account = accountRepository.findById(accountRequest.getAccountId())
 				.orElseThrow(() -> new RuntimeException("Error: Account is not found."));
 		return account.getTransactions();
 		
@@ -143,8 +143,8 @@ public class DataController {
 	}
 	
 	@PostMapping("/budgetinformation")
-	public Budget budgetInformation(Long budgetId) {
-		Budget budget = budgetRepository.findById(budgetId)
+	public Budget budgetInformation(@RequestBody AccountRequest accountRequest) {
+		Budget budget = budgetRepository.findById(accountRequest.getAccountId())
 				.orElseThrow(() -> new RuntimeException("Error: Budget is not found."));
 			
 		return budget;

@@ -40,8 +40,11 @@ function AccountPagePanel(){
     
     useEffect(() => {
         accountInformation();
-    },[])
-
+    },[location.key])
+    
+    useEffect(() => {
+        transactionList();
+    },[location.key])
 
  
     return(
@@ -60,7 +63,7 @@ function AccountPagePanel(){
                     <h1 className = "transaction-title">Transactions</h1>
                     {userData.user ? (
                         <Link to={{ pathname: '/createtransaction/' + userData.user, state: { data: accountId} }}>
-                             <button type="button" class="btn btn-primary">Add Transaction</button>
+                             <div className= "transaction-button" ><button type="button" class="btn btn-primary ">Add Transaction</button></div>
                         </Link>
                         ) : (
 
@@ -74,21 +77,31 @@ function AccountPagePanel(){
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Amount</th>
+                                <th className = "right">Name</th>
+                                <th className = "right">Amount</th>
                                 <th class="right">Company</th>
                                 <th class="center">Date</th>
                                 <th class="right">Category</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="center">1</td>
-                                <td class="left strong">Iphone 10X</td>
-                                <td class="left">Iphone 10X with headphone</td>
-                                <td class="right">$1500</td>
-                                <td class="center">10</td>
-                            </tr>
+                        
+                                {userData.user ? (
+                                    transactionState.map(function(d, idx){
+                                        return  (
+                                            <tr key = {idx}>
+                                                <td class="center">{d.name}</td>
+                                                <td class="left strong">{d.amount}</td>
+                                                <td class="left">{d.company}</td>
+                                                <td class="right">{d.date}</td>
+                                                <td class="center">{d.category}</td> 
+                                            </tr>   
+                                        );
+                                    })
+                                    ) : (
+                                    <>
+                                    </>
+                                    )}  
                         </tbody>
                     </table>
                 </div>

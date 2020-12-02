@@ -186,6 +186,8 @@ a:hover {
 .sidebar{
     background: linear-gradient(0deg,#0c6630 0,#2fba66 100%);
     height: calc(100vh);
+    position: -webkit-sticky;
+    position: sticky;
     width: 230px;
     top: 0;
     margin-left: 1%;
@@ -232,11 +234,36 @@ a:hover {
 
 .flex-side {
   flex: 1;
+  
+}
+
+.flex-side-account, .flex-side-budget, .flex-side-create-budget, .flex-side-create-account{
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+.flex-side-account{
+    flex:1;
+    
+}
+
+.flex-side-create-budget{
+    flex: 1;
+}
+
+.flex-main{
+  flex: 7;
+}
+
+.flex-account{
+    flex: 7;
 
 
 }
-.flex-main{
-  flex: 7;
+
+.flex-budget{
+    flex:7;
+    margin-left: 20%;
 }
 
 .flex-create-account{
@@ -251,7 +278,7 @@ a:hover {
     flex: 2;
     margin: auto;
     margin-right: 15%;
-    margin-top: 1%;
+    margin-top: 2%;
     background-color: #4b525c;
   }
 
@@ -279,6 +306,8 @@ a:hover {
 
 .create-account-page{
     background-color: #252631;
+    
+    
 }
 
 .create-account-header{
@@ -301,6 +330,7 @@ a:hover {
 
   .balance-card{
       margin: 5%;
+      margin-top: 3%;
       background-color: #4b525c;
       color: white; 
   }
@@ -312,9 +342,27 @@ a:hover {
   }
 
   .transaction-title{
-      margin-right: 60%;
+      margin-right: 65%;
+      margin-left: 2%;
+  }
+
+  .transaction-button{
+      padding-top: 5%;
+    
   }
 
   .create-budget{
     
   }
+
+  .budget-header{
+      margin-left:14%;
+      margin-top: 3%;
+      color: white;
+      text-transform: uppercase;
+  }
+
+  .right, .left, .center{
+      color:white;
+  }
+  

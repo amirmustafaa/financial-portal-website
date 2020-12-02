@@ -101,7 +101,7 @@ function Sidebar(){
                         {userData.user ? (
                             budgetState.map(function(d, idx){
                                 return  (
-                                    <Link key = {idx} to={{ pathname: '/budget/' + d.id, state: { data: d.id} }}>
+                                    <Link  key = {idx}  to={{ pathname: '/budget/' + d.id, state: { data: d.id} }}>
                                     <DropdownItem key = {idx}>{d.name}</DropdownItem>
                                     </Link>
                                 );

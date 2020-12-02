@@ -10,8 +10,8 @@ function BudgetPage(){
         <div className = "create-account-page">
             <DashNavBar />
         <div className = "flex-container"> 
-            <div className= "flex-side"><Sidebar  /></div>
-            <div className = "flex-main" ><BudgetPagePanel  /></div>
+            <div className= "flex-side-budget"><Sidebar  /></div>
+            <div className = "flex-budget" ><BudgetPagePanel  /></div>
         </div>
         </div>
 

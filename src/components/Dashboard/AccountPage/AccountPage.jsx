@@ -10,8 +10,8 @@ function AccountPage(){
         <div className = "create-account-page">
             <DashNavBar />
         <div className = "flex-container"> 
-            <div className= "flex-side"><Sidebar  /></div>
-            <div className = "flex-main" ><AccountPagePanel  /></div>
+            <div className= "flex-side-account"><Sidebar  /></div>
+            <div className = "flex-account" ><AccountPagePanel  /></div>
         </div>
         </div>
     );
