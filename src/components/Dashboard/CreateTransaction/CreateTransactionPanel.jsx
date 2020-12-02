@@ -12,8 +12,13 @@ function CreateTransactionPanel(){
     let token = cookies.get("auth-token");
     const { userData } = useContext(UserContext);
     const location = useLocation();
-    const accountId = location.state.data
-
+    let accountId;
+    
+    if(location.state === undefined){
+      history.push("/");
+    }else{
+      accountId = location.state.data;
+   }
     
 
     const [state, setState] = useState({
@@ -63,25 +68,25 @@ function CreateTransactionPanel(){
 
     return(
         <div>
-            <form class="text-center  p-5" >
+            <form className="text-center  p-5" >
 
-                <p class="h4 mb-4 create-account-header">Add Transaction</p>
+                <p className="h4 mb-4 create-account-header">Add Transaction</p>
 
            
-                <input name="name" value = {state.name} onChange = {handleChange}  type="text"  class="form-control mb-4" placeholder="Transaction Name"/>
+                <input name="name" value = {state.name} onChange = {handleChange}  type="text"  className="form-control mb-4" placeholder="Transaction Name"/>
 
             
-                <input name="amount" value = {state.amount} onChange = {handleChange}   class="form-control mb-4" placeholder="Amount"/>
+                <input name="amount" value = {state.amount} onChange = {handleChange}   className="form-control mb-4" placeholder="Amount"/>
 
-                <input name="company" value = {state.company} onChange = {handleChange}   class="form-control mb-4" placeholder="Company"/>
+                <input name="company" value = {state.company} onChange = {handleChange}   className="form-control mb-4" placeholder="Company"/>
 
-                <select name ="type" value = {state.type} onChange = {handleChange} class="browser-default custom-select mb-4">
+                <select name ="type" value = {state.type} onChange = {handleChange} className="browser-default custom-select mb-4">
                     <option value="" disabled>Choose Transaction Type</option>
                     <option value="Charge" defaultValue >Charge</option>
                     <option value="Deposit">Deposit</option>
                     <option value="Withdrawal">Withdrawal</option>
                 </select>
-                <select name ="category" value = {state.category} onChange = {handleChange}   class="browser-default custom-select mb-4">
+                <select name ="category" value = {state.category} onChange = {handleChange}   className="browser-default custom-select mb-4">
                     <option value=""  disabled>Choose Category</option>
                     <option value="Housing" defaultValue>Housing</option>
                     <option value="Utilities">Utilities</option>
@@ -93,7 +98,7 @@ function CreateTransactionPanel(){
                 </select>
 
 
-                <button onClick ={createTransaction} class="btn btn-info btn-block" type="submit">Create</button>
+                <button onClick ={createTransaction} className="btn btn-info btn-block" type="submit">Create</button>
 
              </form>   
         </div>

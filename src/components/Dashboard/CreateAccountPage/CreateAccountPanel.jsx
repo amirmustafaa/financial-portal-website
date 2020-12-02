@@ -15,9 +15,9 @@ function CreateAccountPanel(){
     const [state, setState] = useState({
       name: "",
       accountType: "",
-      currentAmount: null,
-      monthlyAmount:null ,
-      minimumAmount:null
+      currentAmount: undefined,
+      monthlyAmount:undefined ,
+      minimumAmount:undefined
     });
   
     function handleChange(event){
@@ -46,28 +46,28 @@ function CreateAccountPanel(){
     }
     return(
         <div>
-            <form class="text-center  p-5" >
+            <form className="text-center  p-5" >
 
-                <p class="h4 mb-4 create-account-header">Create Account</p>
+                <p className="h4 mb-4 create-account-header">Create Account</p>
 
            
-                <input name="name" value = {state.name} onChange={handleChange} type="text"  class="form-control mb-4" placeholder="Account Name"/>
+                <input name="name" value = {state.name} onChange={handleChange} type="text"  className="form-control mb-4" placeholder="Account Name"/>
 
             
-                <input name="currentAmount"  value = {state.currentAmount} onChange={handleChange}   class="form-control mb-4" placeholder="Current Balance"/>
+                <input name="currentAmount"  value = {state.currentAmount} onChange={handleChange}   className="form-control mb-4" placeholder="Current Balance"/>
 
-                <input name="minimumAmount"  value = {state.minimumAmount} onChange={handleChange}   class="form-control mb-4" placeholder="Minimum Balance"/>
+                <input name="minimumAmount"  value = {state.minimumAmount} onChange={handleChange}   className="form-control mb-4" placeholder="Minimum Balance"/>
 
-                <input name="monthlyAmount"  value = {state.monthlyAmount} onChange={handleChange}   class="form-control mb-4" placeholder="Monthly Spending Limit"/>
+                <input name="monthlyAmount"  value = {state.monthlyAmount} onChange={handleChange}   className="form-control mb-4" placeholder="Monthly Spending Limit"/>
                 
-                <select name ="accountType"  value = {state.accountType} onChange={handleChange} class="browser-default custom-select mb-4">
+                <select name ="accountType"  value = {state.accountType} onChange={handleChange} className="browser-default custom-select mb-4">
                     <option value="" disabled>Choose option</option>
-                    <option value="1" selected>Checking</option>
-                    <option value="2">Savings</option>
+                    <option value="Checking" defaultValue>Checking</option>
+                    <option value="Savings">Savings</option>
                 </select>
 
 
-                <button onClick = {createAccount} class="btn btn-info btn-block" type="submit">Create</button>
+                <button onClick = {createAccount} className="btn btn-info btn-block" type="submit">Create</button>
 
         </form>  
         

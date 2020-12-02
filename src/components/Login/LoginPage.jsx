@@ -59,12 +59,12 @@ function LoginPage(){
                         </div>
                     </div>
                     <div className="bottom text-center mb-5">
-                        <p href="#" className="sm-text mx-auto mb-3">Don't have an account?<Link to="/register"><button className="btn btn-white ml-2">Create new</button></Link></p>
+                        <p href="#" className="sm-text mx-auto mb-3">Don't have an account?<Link to="/register"><button className="btn btn-white ml-2">Sign Up</button></Link></p>
                     </div>
                 </div>
                 <div className="card card2">
                     <div className="my-auto mx-md-5 px-md-5 right">
-                        <h3 className="text-white">We are more than just a company</h3> <small className="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
+                        <h3 className="text-white">Track Your Transactions and Budget for the Future.</h3> 
                     </div>
                 </div>
             </div>

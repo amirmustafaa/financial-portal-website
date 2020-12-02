@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {useLocation } from 'react-router';
 import UserContext from "../../../context/UserContext";
 import Axios from 'axios';
@@ -7,10 +7,16 @@ import Cookies from 'universal-cookie';
 
 function AccountPagePanel(){
     const { userData } = useContext(UserContext);
+    const history = useHistory();
     const cookies = new Cookies();
     let token = cookies.get("auth-token");
     const location = useLocation();
-    const accountId = location.state.data
+    let accountId;
+    if(location.state === undefined){
+        history.push("/");
+     }else{
+        accountId = location.state.data;
+     }
 
     const[accountState, setAccountState]= useState([]);
     const[transactionState, setTransactionState]= useState([]);
@@ -49,11 +55,11 @@ function AccountPagePanel(){
  
     return(
         <div>
-            <div class="card text-center balance-card">
-                <div class="card-header">
+            <div className="card text-center balance-card">
+                <div className="card-header">
                     <h1>Current Balance</h1>
                 </div>
-                <div class="card-body">
+                <div className="card-body">
                      <h2>{accountState.currentAmount}</h2>
                 </div>
             </div>
@@ -63,7 +69,7 @@ function AccountPagePanel(){
                     <h1 className = "transaction-title">Transactions</h1>
                     {userData.user ? (
                         <Link to={{ pathname: '/createtransaction/' + userData.user, state: { data: accountId} }}>
-                             <div className= "transaction-button" ><button type="button" class="btn btn-primary ">Add Transaction</button></div>
+                             <div className= "transaction-button" ><button type="button" className="btn btn-primary ">Add Transaction</button></div>
                         </Link>
                         ) : (
 
@@ -73,15 +79,15 @@ function AccountPagePanel(){
                     
                 </div>
             </div>
-                <div class="table-responsive-sm">
-                    <table class="table table-striped">
+                <div className="table-responsive-sm">
+                    <table className="table table-striped">
                         <thead>
                             <tr>
                                 <th className = "right">Name</th>
                                 <th className = "right">Amount</th>
-                                <th class="right">Company</th>
-                                <th class="center">Date</th>
-                                <th class="right">Category</th>
+                                <th className="right">Company</th>
+                                <th className="center">Date</th>
+                                <th className="right">Category</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,11 +96,11 @@ function AccountPagePanel(){
                                     transactionState.map(function(d, idx){
                                         return  (
                                             <tr key = {idx}>
-                                                <td class="center">{d.name}</td>
-                                                <td class="left strong">{d.amount}</td>
-                                                <td class="left">{d.company}</td>
-                                                <td class="right">{d.date}</td>
-                                                <td class="center">{d.category}</td> 
+                                                <td className="center">{d.name}</td>
+                                                <td className="left strong">{d.amount}</td>
+                                                <td className="left">{d.company}</td>
+                                                <td className="right">{d.date}</td>
+                                                <td className="center">{d.category}</td> 
                                             </tr>   
                                         );
                                     })
