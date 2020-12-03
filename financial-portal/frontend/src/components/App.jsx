@@ -29,7 +29,7 @@ function App() {
         token = "";
       }
 
-        const userRes = await Axios.get("http://localhost:8080/api/test/user", {
+        const userRes = await Axios.get("http://www.moneyportalpro.com/api/test/user", {
           headers: { "Authorization":  `Bearer ${token}`},
         });
         if(userRes.data){

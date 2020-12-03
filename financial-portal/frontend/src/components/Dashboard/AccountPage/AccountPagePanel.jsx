@@ -4,6 +4,20 @@ import {useLocation } from 'react-router';
 import UserContext from "../../../context/UserContext";
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+    NavbarText
+  } from 'reactstrap';
 
 function AccountPagePanel(){
     const { userData } = useContext(UserContext);
@@ -26,7 +40,7 @@ function AccountPagePanel(){
         const accountObject = {
             accountId: accountId
         };
-        const accountRes = await Axios.post("http://localhost:8080/api/data/accountinformation", accountObject,{
+        const accountRes = await Axios.post("http://www.moneyportalpro.com/api/data/accountinformation", accountObject,{
            headers: { "Authorization":  `Bearer ${token}`},
         });
         setAccountState(accountRes.data);
@@ -37,7 +51,7 @@ function AccountPagePanel(){
         const accountObject = {
             accountId: accountId
         };
-        const transactionRes = await Axios.post("http://localhost:8080/api/data/transactionlist", accountObject,{
+        const transactionRes = await Axios.post("http://http://www.moneyportalpro.com/api/data/transactionlist", accountObject,{
            headers: { "Authorization":  `Bearer ${token}`},
         });
         setTransactionState(transactionRes.data);
@@ -52,6 +66,10 @@ function AccountPagePanel(){
         transactionList();
     },[location.key])
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => setIsOpen(!isOpen);
+
  
     return(
         <div>
@@ -64,27 +82,35 @@ function AccountPagePanel(){
                 </div>
             </div>
             <div className = "transactions">
-            <div className = "container">
-                <div className = "row">
-                    <h1 className = "transaction-title">Transactions</h1>
-                    {userData.user ? (
-                        <Link to={{ pathname: '/createtransaction/' + userData.user, state: { data: accountId} }}>
-                             <div className= "transaction-button" ><button type="button" className="btn btn-primary ">Add Transaction</button></div>
-                        </Link>
-                        ) : (
+                <div>
+                    <Navbar>
+                        <NavbarBrand ><h1 className = "transaction-title">Transactions</h1></NavbarBrand>
+                        <Nav navbar>
+                            <NavItem>
+                            {userData.user ? (
+                                <Link to={{ pathname: '/createtransaction/' + userData.user, state: { data: accountId} }}>
+                                    <button type="button" className="btn btn-primary ">Add Transaction</button>
+                                </Link>
+                             ) : (
 
-                        <>
-                        </>
-                        )}
-                    
+                            <>
+                            </>
+                             )}
+                            </NavItem>
+                            
+                        </Nav>
+                    </Navbar>
                 </div>
-            </div>
+           
+                    
+                    
+
                 <div className="table-responsive-sm">
                     <table className="table table-striped">
                         <thead>
                             <tr>
-                                <th className = "right">Name</th>
-                                <th className = "right">Amount</th>
+                                <th className ="right">Name</th>
+                                <th className ="right">Amount</th>
                                 <th className="right">Company</th>
                                 <th className="center">Date</th>
                                 <th className="right">Category</th>

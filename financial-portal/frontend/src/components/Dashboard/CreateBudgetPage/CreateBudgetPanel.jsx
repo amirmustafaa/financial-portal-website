@@ -50,7 +50,7 @@ function CreateBudgetPanel(){
           goal: state.goal
         };
   
-        const budgetRes = await Axios.post("http://localhost:8080/api/data/createbudget", budgetObject,{
+        const budgetRes = await Axios.post("http://www.moneyportalpro.com/api/data/createbudget", budgetObject,{
            headers: { "Authorization":  `Bearer ${token}`},
         });
   

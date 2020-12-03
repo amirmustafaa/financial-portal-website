@@ -24,7 +24,7 @@ function BudgetPagePanel(){
         const budgetObject = {
             accountId: budgetId
         };
-        const budgetRes = await Axios.post("http://localhost:8080/api/data/budgetinformation", budgetObject,{
+        const budgetRes = await Axios.post("http://www.moneyportalpro.com/api/data/budgetinformation", budgetObject,{
            headers: { "Authorization":  `Bearer ${token}`},
         });
         setBudgetState(budgetRes.data);

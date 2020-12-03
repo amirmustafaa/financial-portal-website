@@ -38,7 +38,7 @@ function CreateAccountPanel(){
           minimumAmount: state.minimumAmount
       };
 
-      const accountRes = await Axios.post("http://localhost:8080/api/data/createaccount", accountObject,{
+      const accountRes = await Axios.post("http://www.moneyportalpro.com/api/data/createaccount", accountObject,{
          headers: { "Authorization":  `Bearer ${token}`},
       });
 

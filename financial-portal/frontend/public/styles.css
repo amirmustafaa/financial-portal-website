@@ -222,7 +222,7 @@ a:hover {
 }
 
 .logo{
-    margin-right:70%;
+    margin-right:78%;
 }
 
 /***************DashBoard***************/
@@ -319,8 +319,8 @@ a:hover {
     margin-left: 1%;
   }
   
-.logOut{
-    margin-left: 90%;
+  .logOut{
+      margin-left: 90%;
   
   }
 
@@ -338,22 +338,17 @@ a:hover {
   .transactions{
       margin: 5%;
       background-color:#4b525c;
-      color: white;
   }
 
   .transaction-title{
-      margin-right: 65%;
-      margin-left: 2%;
+      color:white;
   }
 
-  .transaction-button{
-      padding-top: 5%;
-    
+  .account-container{
+      padding-left: 0;
+      margin-left: 0;
   }
 
-  .create-budget{
-    
-  }
 
   .budget-header{
       margin-left:14%;
