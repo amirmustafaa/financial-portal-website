@@ -140,10 +140,9 @@
 			</plugin>
 			 <plugin>
 			    <artifactId>maven-antrun-plugin</artifactId>
-			    <version>3.0.0</version>
 			    <executions>
 			        <execution>
-			            <phase></phase>
+			            <phase>generate-resources</phase>
 			            <configuration>
 			                <target>
 			                    <copy todir="${project.build.directory}/classes/public">
