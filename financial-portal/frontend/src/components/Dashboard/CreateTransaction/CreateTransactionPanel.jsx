@@ -57,7 +57,7 @@ function CreateTransactionPanel(){
  
         };
   
-        const transactionRes = await Axios.post("http://www.moneyportalpro.comapi/data/createtransaction", transactionObject,{
+        const transactionRes = await Axios.post("http://www.moneyportalpro.com/api/data/createtransaction", transactionObject,{
            headers: { "Authorization":  `Bearer ${token}`},
         });
   

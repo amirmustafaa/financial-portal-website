@@ -1,7 +1,7 @@
 /* Login Page */
 
 .login-page{
-  background-image:  linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('./img/moneyImg1.jpg');
+  background-image:  linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('./moneyImg1.jpg');
   background-color: #00031d;
   background-size: cover;
   padding-top: 3%;
