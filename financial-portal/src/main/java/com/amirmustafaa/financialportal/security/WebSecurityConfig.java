@@ -73,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 HttpMethod.POST,
                 "/**"
             )
-            .antMatchers(HttpMethod.OPTIONS, "/**")
+            //.antMatchers(HttpMethod.OPTIONS, "/**")
             .and()
             .ignoring()
             .antMatchers(
