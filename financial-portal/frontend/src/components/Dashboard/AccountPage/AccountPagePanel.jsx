@@ -51,7 +51,7 @@ function AccountPagePanel(){
         const accountObject = {
             accountId: accountId
         };
-        const transactionRes = await Axios.post("http://http://www.moneyportalpro.com/api/data/transactionlist", accountObject,{
+        const transactionRes = await Axios.post("http://www.moneyportalpro.com/api/data/transactionlist", accountObject,{
            headers: { "Authorization":  `Bearer ${token}`},
         });
         setTransactionState(transactionRes.data);
