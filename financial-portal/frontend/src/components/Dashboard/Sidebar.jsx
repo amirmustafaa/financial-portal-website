@@ -21,7 +21,7 @@ function Sidebar(){
 
     
     const getAccounts = async() => {
-        const accountRes = await Axios.get("http://www.moneyportalpro.com/api/data/accountlist", {
+        const accountRes = await Axios.get("https://www.moneyportalpro.com/api/data/accountlist", {
           headers: { "Authorization":  `Bearer ${token}`},
         });
         setAccountState(accountRes.data);
@@ -29,7 +29,7 @@ function Sidebar(){
     }
 
     const getBudgets = async() => {
-        const accountRes = await Axios.get("http://www.moneyportalpro.com/api/data/budgetlist", {
+        const accountRes = await Axios.get("https://www.moneyportalpro.com/api/data/budgetlist", {
           headers: { "Authorization":  `Bearer ${token}`},
         });
         setBudgetState(accountRes.data);

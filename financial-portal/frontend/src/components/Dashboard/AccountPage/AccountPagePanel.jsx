@@ -40,7 +40,7 @@ function AccountPagePanel(){
         const accountObject = {
             accountId: accountId
         };
-        const accountRes = await Axios.post("http://www.moneyportalpro.com/api/data/accountinformation", accountObject,{
+        const accountRes = await Axios.post("https://www.moneyportalpro.com/api/data/accountinformation", accountObject,{
            headers: { "Authorization":  `Bearer ${token}`},
         });
         setAccountState(accountRes.data);
@@ -51,7 +51,7 @@ function AccountPagePanel(){
         const accountObject = {
             accountId: accountId
         };
-        const transactionRes = await Axios.post("http://www.moneyportalpro.com/api/data/transactionlist", accountObject,{
+        const transactionRes = await Axios.post("https://www.moneyportalpro.com/api/data/transactionlist", accountObject,{
            headers: { "Authorization":  `Bearer ${token}`},
         });
         setTransactionState(transactionRes.data);
@@ -78,7 +78,7 @@ function AccountPagePanel(){
                     <h1>Current Balance</h1>
                 </div>
                 <div className="card-body">
-                     <h2>{accountState.currentAmount}</h2>
+                     <h2>${accountState.currentAmount}</h2>
                 </div>
             </div>
             <div className = "transactions">

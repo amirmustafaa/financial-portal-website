@@ -38,7 +38,7 @@ function RegisterPage (){
       role:["user"]
 
     };
-     await Axios.post("http://www.moneyportalpro.com/api/auth/signup", userObject);
+     await Axios.post("https://www.moneyportalpro.com/api/auth/signup", userObject);
 
     history.push("/");
   };
