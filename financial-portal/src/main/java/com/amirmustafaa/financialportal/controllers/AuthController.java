@@ -84,6 +84,23 @@ public class AuthController {
 					.badRequest()
 					.body(new MessageResponse("Error: Email is already in use!"));
 		}
+		else if (signUpRequest.getUsername().equals("")) {
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponse("Error: Username not entered!"));
+		}
+		
+		else if (signUpRequest.getEmail().equals("")) {
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponse("Error: Email not entered!"));
+		}
+		
+		else if (signUpRequest.getPassword().equals("")) {
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponse("Error: Password not entered!"));
+		}
 		
 		else if(!signUpRequest.getPasswordCheck().equals(signUpRequest.getPassword())) {
 			return ResponseEntity
