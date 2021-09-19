@@ -38,15 +38,11 @@ function RegisterPage (){
       role:["user"]
 
     };
-     const dataRes = await Axios.post("https://www.moneyportalpro.com/api/auth/signup", userObject).catch(function (error) {
-      if (error.response) {
-        alert(error.response.data.message);
-      }
-    });
+     await Axios.post("https://www.moneyportalpro.com/api/auth/signup", userObject)
 
-    if(dataRes){
-      history.replace("/");
-    }
+   
+     history.replace("/");
+    
   };
 
 
