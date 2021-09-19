@@ -60,11 +60,9 @@ function LoginPage(){
 
   const createRole = async (event) =>{
     event.preventDefault();
-    const roleObject = {
-      name: nameState
-    };
 
-    await Axios.post("https://www.moneyportalpro.com/api/data/createroles", roleObject);
+
+    await Axios.post("https://www.moneyportalpro.com/api/data/createroles", nameState);
      
   }
   return (
