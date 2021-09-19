@@ -31,14 +31,20 @@ function LoginPage(){
       password: state.password,
     };
 
-    const loginRes = await Axios.post("https://www.moneyportalpro.com/api/auth/signin", userObject);
+    const loginRes = await Axios.post("https://www.moneyportalpro.com/api/auth/signin", userObject).catch(function (error) {
+      if (error.response) {
+        alert("Username or Password Incorrect");
+      }
+    });
 
+      if(loginRes){
       setUserData({
         token: loginRes.data.accessToken,
         user: loginRes.data.username
       })
-    cookies.set("auth-token", loginRes.data.accessToken,{ path: '/' }, {httpOnly:true});
-    history.push("/mainpage/" + loginRes.data.username)
+      cookies.set("auth-token", loginRes.data.accessToken,{ path: '/' }, {httpOnly:true});
+      history.replace("/mainpage/" + loginRes.data.username)
+    }
 
   };
   return (
