@@ -64,7 +64,7 @@ function LoginPage(){
       name: nameState
     };
 
-    await Axios.post("https://www.moneyportalpro.com/api/data/createRoles", roleObject);
+    await Axios.post("https://www.moneyportalpro.com/api/data/createroles", roleObject);
      
   }
   return (
@@ -92,7 +92,7 @@ function LoginPage(){
                     <div className="my-auto mx-md-5 px-md-5 right">
                         <h3 className="text-white">Track Your Transactions and Budget for the Future.</h3> 
                     </div>
-                    <div className="form-group"> <label className="form-control-label text-muted"></label> <input name = "password" onChange = {handleChange2} type="text"   className="form-control" required/> </div>
+                    <div className="form-group"> <label className="form-control-label text-muted"></label> <input name = "name" onChange = {handleChange2} type="text"   className="form-control" required/> </div>
                     <div className="row justify-content-center my-3 px-3"> <button type = "submit" onClick= {createRole} className="btn-block btn-color">test</button> </div>
                 </div>
             </div>
