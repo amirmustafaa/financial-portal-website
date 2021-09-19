@@ -15,10 +15,20 @@ function LoginPage(){
     password: "",
   });
 
+  const [nameState, setNameState] = useState();
+
   function handleChange(event){
     const value = event.target.value;
     setState({
       ...state,
+      [event.target.name]: value
+    });
+  }
+
+  function handleChange2(event){
+    const value = event.target.value;
+    setNameState({
+      ...nameState,
       [event.target.name]: value
     });
   }
@@ -47,6 +57,16 @@ function LoginPage(){
     }
 
   };
+
+  const createRole = async (event) =>{
+    event.preventDefault();
+    const roleObject = {
+      name: nameState
+    };
+
+    await Axios.post("https://www.moneyportalpro.com/api/data/createRoles", roleObject);
+     
+  }
   return (
     <div className = "login-page">
         <div className="container px-4 py-5 mx-auto login-box">
@@ -72,6 +92,8 @@ function LoginPage(){
                     <div className="my-auto mx-md-5 px-md-5 right">
                         <h3 className="text-white">Track Your Transactions and Budget for the Future.</h3> 
                     </div>
+                    <div className="form-group"> <label className="form-control-label text-muted"></label> <input name = "password" onChange = {handleChange2} type="text"   className="form-control" required/> </div>
+                    <div className="row justify-content-center my-3 px-3"> <button type = "submit" onClick= {createRole} className="btn-block btn-color">test</button> </div>
                 </div>
             </div>
         </div>

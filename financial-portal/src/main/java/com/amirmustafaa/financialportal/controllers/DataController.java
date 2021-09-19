@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.amirmustafaa.financialportal.models.Account;
 import com.amirmustafaa.financialportal.models.Budget;
+import com.amirmustafaa.financialportal.models.Role;
 import com.amirmustafaa.financialportal.models.Transaction;
 import com.amirmustafaa.financialportal.models.User;
 import com.amirmustafaa.financialportal.payload.request.AccountRequest;
 import com.amirmustafaa.financialportal.repository.AccountRepository;
 import com.amirmustafaa.financialportal.repository.BudgetRepository;
+import com.amirmustafaa.financialportal.repository.RoleRepository;
 import com.amirmustafaa.financialportal.repository.TransactionRepository;
 import com.amirmustafaa.financialportal.repository.UserRepository;
 
@@ -44,6 +46,9 @@ public class DataController {
 	
 	@Autowired
 	TransactionRepository transactionRepository;
+	
+	@Autowired
+	RoleRepository roleRepository;
 	
 
 	@PostMapping("/createaccount")
@@ -150,6 +155,12 @@ public class DataController {
 		return budget;
 		
 		
+	}
+	
+	@PostMapping("/createroles")
+	public Role createRoles(@RequestBody Role role) {
+		roleRepository.save(role);	
+		return role;
 	}
 	
 	
