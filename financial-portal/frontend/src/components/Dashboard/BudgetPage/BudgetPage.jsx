@@ -7,7 +7,7 @@ function BudgetPage(){
 
 
     return(
-        <div className = "create-account-page">
+        <div className = "create-account-page budget-page">
             <DashNavBar />
         <div className = "flex-container"> 
             <div className= "flex-side-budget"><Sidebar  /></div>
