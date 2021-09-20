@@ -331,6 +331,10 @@ a:hover {
           margin-left:100px
       }
 
+      .main-card{
+          width: 248;
+      }
+
 }
 
 .create-account-header{
