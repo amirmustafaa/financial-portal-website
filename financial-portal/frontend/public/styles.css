@@ -297,7 +297,7 @@ a:hover {
 }
 
 .main-card{
-    background-color: white;
+    background: linear-gradient(90deg, rgba(28,28,28,0.01) 3%, rgba(82,82,82,1) 47%, rgba(5,5,5,1) 100%) !important;
 }
 
 .card-text-main{
